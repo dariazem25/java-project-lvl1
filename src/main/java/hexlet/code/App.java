@@ -1,14 +1,9 @@
 package hexlet.code;
 
-import java.util.Scanner;
+import hexlet.code.games.Calc;
+import hexlet.code.games.Even;
 
 public class App {
-
-    private static Scanner scanner = new Scanner(System.in);
-
-    public static Scanner getScanner() {
-        return scanner;
-    }
 
     public static void main(String[] args) {
         menu();
@@ -19,21 +14,30 @@ public class App {
                 Please enter the game number and press Enter.
                 1 - Greet
                 2 - Even
+                3 - Calc
                 0 - Exit
                 Your choice:\s""");
-        if (scanner.hasNextInt()) {
-            int choice = scanner.nextInt();
-            if (choice == 1) {
-                Games.greeting();
-            } else if (choice == 2) {
-                Games.evenNumbers();
-            } else if (choice == 0) {
-                Games.exit();
+        if (Engine.getScanner().hasNextInt()) {
+            int choice = Engine.getScanner().nextInt();
+
+            if (choice == Engine.GREETING_GAME) {
+                Engine.greeting();
+            } else if (choice == Engine.EVEN_GAME) {
+                Engine.greeting();
+                Even.evenNumbers(Engine.getUser());
+            } else if (choice == Engine.CALC_GAME) {
+                Engine.greeting();
+                Calc.calc(Engine.getUser());
+            } else if (choice == Engine.EXIT) {
+                Engine.exit();
+            } else {
+                System.out.println("A game does not exist. Please try again");
+                Engine.getScanner().nextLine();
+                menu();
             }
         } else {
-            System.out.println("You choose incorrect value. Please try again");
-            scanner.nextLine();
-            menu();
+            System.out.println("Invalid input value.");
+            Engine.exit();
         }
     }
 }
