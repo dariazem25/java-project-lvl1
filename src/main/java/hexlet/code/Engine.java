@@ -5,11 +5,13 @@ import java.util.Scanner;
 public class Engine {
 
     protected static final int CORRECT_ANSWERS = 3;
-    protected static final int RANGE = 10;
+    protected static final int RANGE = 100;
+    protected static final int MIN_VALUE = 1;
     protected static final int MAX_OPERATIONS = 3;
     protected static final int GREETING_GAME = 1;
     protected static final int EVEN_GAME = 2;
     protected static final int CALC_GAME = 3;
+    protected static final int GCD = 4;
     protected static final int EXIT = 0;
 
 

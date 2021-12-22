@@ -4,3 +4,4 @@
 ![Java CI](https://github.com/dariazem25/java-project-lvl1/workflows/Java%20CI/badge.svg)
 [![asciicast](https://asciinema.org/a/ctAhmc0IFDDErMkPHCyBwQJ4Z.svg)](https://asciinema.org/a/ctAhmc0IFDDErMkPHCyBwQJ4Z)
 [![asciicast](https://asciinema.org/a/pQ3Q9KSSII9e2FIhxs9CviKwy.svg)](https://asciinema.org/a/pQ3Q9KSSII9e2FIhxs9CviKwy)
+[![asciicast](https://asciinema.org/a/iuwKChyRcUC545ghVnSjpkqyG.svg)](https://asciinema.org/a/iuwKChyRcUC545ghVnSjpkqyG)

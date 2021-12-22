@@ -2,6 +2,7 @@ package hexlet.code;
 
 import hexlet.code.games.Calc;
 import hexlet.code.games.Even;
+import hexlet.code.games.GCD;
 
 public class App {
 
@@ -15,6 +16,7 @@ public class App {
                 1 - Greet
                 2 - Even
                 3 - Calc
+                4 - GCD
                 0 - Exit
                 Your choice:\s""");
         if (Engine.getScanner().hasNextInt()) {
@@ -28,6 +30,9 @@ public class App {
             } else if (choice == Engine.CALC_GAME) {
                 Engine.greeting();
                 Calc.calc(Engine.getUser());
+            } else if (choice == Engine.GCD) {
+                Engine.greeting();
+                GCD.gcd(Engine.getUser());
             } else if (choice == Engine.EXIT) {
                 Engine.exit();
             } else {
