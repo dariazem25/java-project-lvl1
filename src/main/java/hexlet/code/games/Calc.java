@@ -7,13 +7,12 @@ import java.util.Random;
 public class Calc extends Engine {
 
     public static void calc(String name) {
-        Random random = new Random();
         System.out.println("What is the result of the expression?");
 
         for (int i = 0; i < CORRECT_ANSWERS; i++) {
-            int a = random.nextInt(RANGE);
-            int b = random.nextInt(RANGE);
-            char operator = getRandomOperator(random);
+            int a = getRandom().nextInt(RANGE);
+            int b = getRandom().nextInt(RANGE);
+            char operator = getRandomOperator(getRandom());
 
             System.out.print("Question: " + a + " " + operator + " " + b + "\nYour answer: ");
             int result = calcRandomOperation(operator, a, b);

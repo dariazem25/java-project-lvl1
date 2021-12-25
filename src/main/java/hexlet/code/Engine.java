@@ -1,21 +1,26 @@
 package hexlet.code;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Engine {
 
     protected static final int CORRECT_ANSWERS = 3;
     protected static final int RANGE = 100;
+    protected static final int BOUND = 10;
     protected static final int MIN_VALUE = 1;
     protected static final int MAX_OPERATIONS = 3;
     protected static final int GREETING_GAME = 1;
     protected static final int EVEN_GAME = 2;
     protected static final int CALC_GAME = 3;
     protected static final int GCD = 4;
+    protected static final int PROGRESSION = 5;
     protected static final int EXIT = 0;
 
 
     private static Scanner scanner = new Scanner(System.in);
+    private static Random random = new Random();
+
     private static int score = 0;
     private static String user;
 
@@ -29,6 +34,10 @@ public class Engine {
 
     public static Scanner getScanner() {
         return scanner;
+    }
+
+    public static Random getRandom() {
+        return random;
     }
 
     protected static void greeting() {

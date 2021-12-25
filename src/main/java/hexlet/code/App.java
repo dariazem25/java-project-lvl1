@@ -3,6 +3,7 @@ package hexlet.code;
 import hexlet.code.games.Calc;
 import hexlet.code.games.Even;
 import hexlet.code.games.GCD;
+import hexlet.code.games.Progression;
 
 public class App {
 
@@ -17,6 +18,7 @@ public class App {
                 2 - Even
                 3 - Calc
                 4 - GCD
+                5 - Progression
                 0 - Exit
                 Your choice:\s""");
         if (Engine.getScanner().hasNextInt()) {
@@ -33,6 +35,9 @@ public class App {
             } else if (choice == Engine.GCD) {
                 Engine.greeting();
                 GCD.gcd(Engine.getUser());
+            } else if (choice == Engine.PROGRESSION) {
+                Engine.greeting();
+                Progression.progression(Engine.getUser());
             } else if (choice == Engine.EXIT) {
                 Engine.exit();
             } else {
