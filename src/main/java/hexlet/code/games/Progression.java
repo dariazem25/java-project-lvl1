@@ -14,9 +14,11 @@ public class Progression extends Engine {
             int inc = getRandom().nextInt(BOUND);
             int hiddenElement = getRandom().nextInt(BOUND);
 
-            String progression = provideSequence(inc, firstElement, hiddenElement);
+            System.out.print("Question: ");
+            provideSequence(inc, firstElement, hiddenElement);
+            System.out.print("\nYour answer: ");
             int result = sequence[hiddenElement];
-            System.out.print("Question: " + progression + "\nYour answer: ");
+
             if (getScanner().hasNextInt()) {
                 int choice = getScanner().nextInt();
                 processing(String.valueOf(result), String.valueOf(choice), name);
@@ -27,9 +29,8 @@ public class Progression extends Engine {
         }
     }
 
-    private static String provideSequence(int inc, int firstElement, int hiddenElement) {
+    private static void provideSequence(int inc, int firstElement, int hiddenElement) {
         sequence[0] = firstElement;
-        String result = "";
 
         for (int i = 1; i < sequence.length; i++) {
             sequence[i] = sequence[i - 1] + inc;
@@ -37,13 +38,11 @@ public class Progression extends Engine {
 
         for (int i = 0; i < sequence.length; i++) {
             if (i == hiddenElement) {
-                result = result + "..";
+                System.out.print("..");
             } else {
-                result = result + " " + sequence[i] + " ";
+                System.out.print(" " + sequence[i] + " ");
             }
         }
-
-        return result;
     }
 
 }
