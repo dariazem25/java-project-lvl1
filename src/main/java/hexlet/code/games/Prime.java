@@ -2,15 +2,17 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-public class Prime extends Engine {
+public class Prime {
 
-    public static void isPrime(String name) {
-        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
+    private static final int MIN_DIVISOR = 3;
 
-        for (int i = 0; i < CORRECT_ANSWERS; i++) {
-            int number = getRandom().nextInt(RANGE - MIN_DIVISOR) + MIN_DIVISOR;
-            System.out.print("Question: " + number + "\nYour answer: ");
-            String answer = getScanner().next();
+    public static void isPrime() {
+        String question1 = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+        System.out.println();
+
+        for (int i = 0; i < Engine.CORRECT_ANSWERS; i++) {
+            int number = Engine.getRandom().nextInt(Engine.RANGE - MIN_DIVISOR) + MIN_DIVISOR;
+            String question2 = "Question: " + number + "\nYour answer: ";
             String rightAnswer = "";
 
             if (number % 2 != 0) {
@@ -26,12 +28,7 @@ public class Prime extends Engine {
                 rightAnswer = "no";
             }
 
-            if (!(answer.equals("yes")) && !(answer.equals("no"))) {
-                System.out.println("Invalid input value!");
-                exit();
-            } else {
-                processing(rightAnswer, answer, name);
-            }
+            Engine.processing(question1, question2, rightAnswer, true);
         }
     }
 }

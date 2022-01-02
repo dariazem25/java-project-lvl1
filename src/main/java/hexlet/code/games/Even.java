@@ -2,23 +2,16 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-public class Even extends Engine {
+public class Even {
 
-    public static void evenNumbers(String name) {
-        System.out.println("Answer 'yes' if number even otherwise answer 'no'.");
+    public static void evenNumbers() {
+        String question1 = "Answer 'yes' if number even otherwise answer 'no'.";
 
-        for (int i = 0; i < CORRECT_ANSWERS; i++) {
-            int number = getRandom().nextInt(RANGE);
-            System.out.print("Question: " + number + "\nYour answer: ");
-            String answer = getScanner().next();
+        for (int i = 0; i < Engine.CORRECT_ANSWERS; i++) {
+            int number = Engine.getRandom().nextInt(Engine.RANGE);
+            String question2 = "Question: " + number + "\nYour answer: ";
             String rightAnswer = (number % 2) == 0 ? "yes" : "no";
-
-            if (!(answer.equals("yes")) && !(answer.equals("no"))) {
-                System.out.println("Invalid input value!");
-                exit();
-            } else {
-                processing(rightAnswer, answer, name);
-            }
+            Engine.processing(question1, question2, rightAnswer, true);
         }
     }
 }

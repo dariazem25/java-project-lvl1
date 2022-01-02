@@ -2,35 +2,31 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-public class GCD extends Engine {
+public class GCD {
 
-    public static void gcd(String name) {
-        System.out.println("Find the greatest common divisor of given numbers.");
+    private static final int MIN_VALUE = 1;
 
-        for (int i = 0; i < CORRECT_ANSWERS; i++) {
-            int a = getRandom().nextInt(RANGE - MIN_VALUE) + MIN_VALUE;
-            int b = getRandom().nextInt(RANGE - MIN_VALUE) + MIN_VALUE;
+    public static void gcd() {
+        String question1 = "Find the greatest common divisor of given numbers.";
 
-            System.out.print("Question: " + a + " " + b + "\nYour answer: ");
-            if (getScanner().hasNextInt()) {
-                int choice = getScanner().nextInt();
-                int max = Math.max(a, b);
-                int min = Math.min(a, b);
-                int result;
+        for (int i = 0; i < Engine.CORRECT_ANSWERS; i++) {
+            int a = Engine.getRandom().nextInt(Engine.RANGE - MIN_VALUE) + MIN_VALUE;
+            int b = Engine.getRandom().nextInt(Engine.RANGE - MIN_VALUE) + MIN_VALUE;
 
-                if (max % min != 0) {
-                    while ((max % min) != 0) {
-                        int reminder = max % min;
-                        max = min;
-                        min = reminder;
-                    }
+            String question2 = "Question: " + a + " " + b + "\nYour answer: ";
+            int max = Math.max(a, b);
+            int min = Math.min(a, b);
+            int result;
+
+            if (max % min != 0) {
+                while ((max % min) != 0) {
+                    int reminder = max % min;
+                    max = min;
+                    min = reminder;
                 }
-                result = min;
-                processing(String.valueOf(result), String.valueOf(choice), name);
-            } else {
-                System.out.println("Invalid input value!");
-                exit();
             }
+            result = min;
+            Engine.processing(question1, question2, String.valueOf(result), false);
         }
     }
 }

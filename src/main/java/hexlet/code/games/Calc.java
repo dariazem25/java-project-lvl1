@@ -4,62 +4,41 @@ import hexlet.code.Engine;
 
 import java.util.Random;
 
-public class Calc extends Engine {
+public class Calc {
 
-    public static void calc(String name) {
-        System.out.println("What is the result of the expression?");
+    private static final int MAX_OPERATIONS = 3;
 
-        for (int i = 0; i < CORRECT_ANSWERS; i++) {
-            int a = getRandom().nextInt(RANGE);
-            int b = getRandom().nextInt(RANGE);
-            char operator = getRandomOperator(getRandom());
+    public static void calc() {
+        String question1 = "What is the result of the expression?";
 
-            System.out.print("Question: " + a + " " + operator + " " + b + "\nYour answer: ");
+        for (int i = 0; i < Engine.CORRECT_ANSWERS; i++) {
+            int a = Engine.getRandom().nextInt(Engine.RANGE);
+            int b = Engine.getRandom().nextInt(Engine.RANGE);
+            char operator = getRandomOperator(Engine.getRandom());
+            String question2 = "Question: " + a + " " + operator + " " + b + "\nYour answer: ";
             int result = calcRandomOperation(operator, a, b);
-            if (getScanner().hasNextInt()) {
-                int choice = getScanner().nextInt();
-                processing(String.valueOf(result), String.valueOf(choice), name);
-            } else {
-                System.out.println("Invalid input value!");
-                exit();
-            }
+            Engine.processing(question1, question2, String.valueOf(result), false);
         }
     }
 
     private static char getRandomOperator(Random random) {
-        char randomOperator;
+        char randomOperator = switch (random.nextInt(MAX_OPERATIONS)) {
+            case 0 -> '*';
+            case 1 -> '+';
+            case 2 -> '-';
+            default -> throw new IllegalStateException("Unexpected value: " + random.nextInt(MAX_OPERATIONS));
+        };
 
-        switch (random.nextInt(MAX_OPERATIONS)) {
-            case 0:
-                randomOperator = '*';
-                break;
-            case 1:
-                randomOperator = '+';
-                break;
-            case 2:
-                randomOperator = '-';
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + random.nextInt(MAX_OPERATIONS));
-        }
         return randomOperator;
     }
 
     private static int calcRandomOperation(char operator, int a, int b) {
-        int result;
-        switch (operator) {
-            case '*':
-                result = a * b;
-                break;
-            case '+':
-                result = a + b;
-                break;
-            case '-':
-                result = a - b;
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + operator);
-        }
+        int result = switch (operator) {
+            case '*' -> a * b;
+            case '+' -> a + b;
+            case '-' -> a - b;
+            default -> throw new IllegalStateException("Unexpected value: " + operator);
+        };
         return result;
     }
 }

@@ -1,12 +1,26 @@
 package hexlet.code;
 
-import hexlet.code.games.Calc;
+import hexlet.code.games.Greet;
 import hexlet.code.games.Even;
+import hexlet.code.games.Calc;
 import hexlet.code.games.GCD;
 import hexlet.code.games.Progression;
 import hexlet.code.games.Prime;
+import hexlet.code.games.Exit;
+
+import java.util.Scanner;
 
 public class App {
+
+    private static final int GREETING_GAME = 1;
+    private static final int EVEN_GAME = 2;
+    private static final int CALC_GAME = 3;
+    private static final int GCD_GAME = 4;
+    private static final int PROGRESSION_GAME = 5;
+    private static final int PRIME_GAME = 6;
+    private static final int EXIT_GAME = 0;
+
+    private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         menu();
@@ -23,36 +37,37 @@ public class App {
                 6 - Prime
                 0 - Exit
                 Your choice:\s""");
-        if (Engine.getScanner().hasNextInt()) {
-            int choice = Engine.getScanner().nextInt();
+        if (scanner.hasNextInt()) {
+            int choice = scanner.nextInt();
 
-            if (choice == Engine.GREETING_GAME) {
-                Engine.greeting();
-            } else if (choice == Engine.EVEN_GAME) {
-                Engine.greeting();
-                Even.evenNumbers(Engine.getUser());
-            } else if (choice == Engine.CALC_GAME) {
-                Engine.greeting();
-                Calc.calc(Engine.getUser());
-            } else if (choice == Engine.GCD) {
-                Engine.greeting();
-                GCD.gcd(Engine.getUser());
-            } else if (choice == Engine.PROGRESSION) {
-                Engine.greeting();
-                Progression.progression(Engine.getUser());
-            } else if (choice == Engine.PRIME) {
-                Engine.greeting();
-                Prime.isPrime(Engine.getUser());
-            } else if (choice == Engine.EXIT) {
-                Engine.exit();
+            if (choice == GREETING_GAME) {
+                Greet.greeting();
+            } else if (choice == EVEN_GAME) {
+                Greet.greeting();
+                Even.evenNumbers();
+            } else if (choice == CALC_GAME) {
+                Greet.greeting();
+                Calc.calc();
+            } else if (choice == GCD_GAME) {
+                Greet.greeting();
+                GCD.gcd();
+            } else if (choice == PROGRESSION_GAME) {
+                Greet.greeting();
+                Progression.progression();
+            } else if (choice == PRIME_GAME) {
+                Greet.greeting();
+                Prime.isPrime();
+            } else if (choice == EXIT_GAME) {
+                Exit.exit();
             } else {
                 System.out.println("A game does not exist. Please try again");
-                Engine.getScanner().nextLine();
+                scanner.nextLine();
                 menu();
             }
         } else {
             System.out.println("Invalid input value.");
-            Engine.exit();
+            scanner.close();
+            Exit.exit();
         }
     }
 }
