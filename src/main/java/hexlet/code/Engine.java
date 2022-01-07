@@ -1,7 +1,5 @@
 package hexlet.code;
 
-import hexlet.code.games.Exit;
-
 import java.util.Random;
 import java.util.Scanner;
 
@@ -11,52 +9,48 @@ public class Engine {
     public static final int RANGE = 100;
 
     private static int score = 0;
-    private static String user;
 
     private static Scanner scanner = new Scanner(System.in);
     private static Random random = new Random();
-
-    public static String getUser() {
-        return user;
-    }
-
-    public static void setUser(String newUser) {
-        Engine.user = newUser;
-    }
-
-    public static Scanner getScanner() {
-        return scanner;
-    }
 
     public static Random getRandom() {
         return random;
     }
 
-    public static void processing(String question1, String question2, String rightAnswer, boolean isString) {
-        System.out.println(question1);
-        System.out.print(question2);
-        boolean isInteger = scanner.hasNextInt();
-        String answer = scanner.next();
+    public static String greeting() {
+        System.out.print("\nWelcome to the Brain Games! \nMay I have your name? ");
+        String user = scanner.next();
+        System.out.println("Hello, " + user + "!");
+        return user;
+    }
 
-        if (!isInteger && !isString || (!isInteger && ((!answer.equals("yes"))
-                && (!answer.equals("no")))) || (isInteger && isString)) {
-            System.out.println("Invalid input value!");
-            Exit.exit();
-            return;
-        }
+    public static void exit() {
+        System.out.println("See you soon!");
+        scanner.close();
+    }
+
+    public static boolean processing(String question1, String value, String rightAnswer, String user) {
+        System.out.println(question1);
+        String question2 = "Question: " + value + "\nYour answer: ";
+        System.out.print(question2);
+        String answer = scanner.next();
+        boolean isIncorrect = false;
 
         if (rightAnswer.equals(answer)) {
             System.out.println("Correct!");
             score++;
         } else {
-            System.out.println("\n'" + answer + "' is wrong answer ;(. Correct answer was '" + rightAnswer + "'.");
-            System.out.println("Let's try again, " + getUser() + "!");
-            Exit.exit();
+            System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + rightAnswer + "'.");
+            System.out.println("Let's try again, " + user + "!");
+            scanner.close();
+            isIncorrect = true;
         }
 
         if (score == CORRECT_ANSWERS) {
-            System.out.println("Congratulations, " + getUser() + "!");
-            Exit.exit();
+            System.out.println("Congratulations, " + user + "!");
+            scanner.close();
         }
+
+        return isIncorrect;
     }
 }

@@ -8,6 +8,7 @@ public class Progression {
     private static int[] sequence = new int[BOUND];
 
     public static void progression() {
+        String user = Engine.greeting();
         String question1 = "What number is missing in the progression?";
 
         for (int i = 0; i < Engine.CORRECT_ANSWERS; i++) {
@@ -17,8 +18,10 @@ public class Progression {
 
             String progressionSequence = provideSequence(inc, firstElement, hiddenElement);
             int result = sequence[hiddenElement];
-            String question2 = "Question:" + progressionSequence + "\nYour answer: ";
-            Engine.processing(question1, question2, String.valueOf(result), false);
+            boolean isIncorrect = Engine.processing(question1, progressionSequence, String.valueOf(result), user);
+            if (isIncorrect) {
+                break;
+            }
         }
     }
 
@@ -32,9 +35,9 @@ public class Progression {
 
         for (int i = 0; i < sequence.length; i++) {
             if (i == hiddenElement) {
-                result.append(" ..");
+                result.append(".. ");
             } else {
-                result.append(" ").append(sequence[i]);
+                result.append(sequence[i]).append(" ");
             }
         }
         return result.toString();

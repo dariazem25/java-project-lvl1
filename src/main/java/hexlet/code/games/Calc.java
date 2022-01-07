@@ -9,15 +9,19 @@ public class Calc {
     private static final int MAX_OPERATIONS = 3;
 
     public static void calc() {
+        String user = Engine.greeting();
         String question1 = "What is the result of the expression?";
 
         for (int i = 0; i < Engine.CORRECT_ANSWERS; i++) {
             int a = Engine.getRandom().nextInt(Engine.RANGE);
             int b = Engine.getRandom().nextInt(Engine.RANGE);
             char operator = getRandomOperator(Engine.getRandom());
-            String question2 = "Question: " + a + " " + operator + " " + b + "\nYour answer: ";
+            String value = a + " " + operator + " " + b;
             int result = calcRandomOperation(operator, a, b);
-            Engine.processing(question1, question2, String.valueOf(result), false);
+            boolean isIncorrect = Engine.processing(question1, value, String.valueOf(result), user);
+            if (isIncorrect) {
+                break;
+            }
         }
     }
 
