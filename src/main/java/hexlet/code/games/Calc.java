@@ -9,20 +9,20 @@ public class Calc {
     private static final int MAX_OPERATIONS = 3;
 
     public static void calc() {
-        String user = Engine.greeting();
-        String question1 = "What is the result of the expression?";
+        String question = "What is the result of the expression?";
+        String[] questions = new String[Engine.QUESTIONS];
+        String[] rightAnswers = new String[Engine.QUESTIONS];
 
-        for (int i = 0; i < Engine.CORRECT_ANSWERS; i++) {
+        for (int i = 0; i < questions.length; i++) {
             int a = Engine.getRandom().nextInt(Engine.RANGE);
             int b = Engine.getRandom().nextInt(Engine.RANGE);
             char operator = getRandomOperator(Engine.getRandom());
             String value = a + " " + operator + " " + b;
             int result = calcRandomOperation(operator, a, b);
-            boolean isIncorrect = Engine.processing(question1, value, String.valueOf(result), user);
-            if (isIncorrect) {
-                break;
-            }
+            questions[i] = value;
+            rightAnswers[i] = String.valueOf(result);
         }
+        Engine.run(question, questions, rightAnswers);
     }
 
     private static char getRandomOperator(Random random) {

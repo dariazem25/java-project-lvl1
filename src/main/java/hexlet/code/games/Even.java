@@ -5,16 +5,16 @@ import hexlet.code.Engine;
 public class Even {
 
     public static void evenNumbers() {
-        String user = Engine.greeting();
         String question1 = "Answer 'yes' if number even otherwise answer 'no'.";
+        String[] questions = new String[Engine.QUESTIONS];
+        String[] rightAnswers = new String[Engine.QUESTIONS];
 
-        for (int i = 0; i < Engine.CORRECT_ANSWERS; i++) {
+        for (int i = 0; i < questions.length; i++) {
             int number = Engine.getRandom().nextInt(Engine.RANGE);
             String rightAnswer = (number % 2) == 0 ? "yes" : "no";
-            boolean isIncorrect = Engine.processing(question1, String.valueOf(number), rightAnswer, user);
-            if (isIncorrect) {
-                break;
-            }
+            questions[i] = String.valueOf(number);
+            rightAnswers[i] = rightAnswer;
         }
+        Engine.run(question1, questions, rightAnswers);
     }
 }

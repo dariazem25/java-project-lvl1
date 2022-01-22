@@ -7,10 +7,11 @@ public class GCD {
     private static final int MIN_VALUE = 1;
 
     public static void gcd() {
-        String user = Engine.greeting();
         String question1 = "Find the greatest common divisor of given numbers.";
+        String[] questions = new String[Engine.QUESTIONS];
+        String[] rightAnswers = new String[Engine.QUESTIONS];
 
-        for (int i = 0; i < Engine.CORRECT_ANSWERS; i++) {
+        for (int i = 0; i < questions.length; i++) {
             int a = Engine.getRandom().nextInt(Engine.RANGE - MIN_VALUE) + MIN_VALUE;
             int b = Engine.getRandom().nextInt(Engine.RANGE - MIN_VALUE) + MIN_VALUE;
 
@@ -27,10 +28,9 @@ public class GCD {
                 }
             }
             result = min;
-            boolean isIncorrect = Engine.processing(question1, value, String.valueOf(result), user);
-            if (isIncorrect) {
-                break;
-            }
+            questions[i] = value;
+            rightAnswers[i] = String.valueOf(result);
         }
+        Engine.run(question1, questions, rightAnswers);
     }
 }

@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Engine {
 
-    public static final int CORRECT_ANSWERS = 3;
+    public static final int QUESTIONS = 3;
     public static final int RANGE = 100;
 
     private static int score = 0;
@@ -29,28 +29,29 @@ public class Engine {
         scanner.close();
     }
 
-    public static boolean processing(String question1, String value, String rightAnswer, String user) {
-        System.out.println(question1);
-        String question2 = "Question: " + value + "\nYour answer: ";
-        System.out.print(question2);
-        String answer = scanner.next();
-        boolean isIncorrect = false;
+    public static void run(String mainAnswer, String[] questions, String[] answers) {
+        String user = greeting();
+        System.out.println(mainAnswer);
 
-        if (rightAnswer.equals(answer)) {
-            System.out.println("Correct!");
-            score++;
-        } else {
-            System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + rightAnswer + "'.");
-            System.out.println("Let's try again, " + user + "!");
-            scanner.close();
-            isIncorrect = true;
+        for (int i = 0; i < questions.length; i++) {
+            String question1 = "Question: " + questions[i] + "\nYour answer: ";
+            System.out.print(question1);
+            String answer = scanner.next();
+
+            if (answers[i].equals(answer)) {
+                System.out.println("Correct!");
+                score++;
+            } else {
+                System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + answers[i] + "'.");
+                System.out.println("Let's try again, " + user + "!");
+                scanner.close();
+                break;
+            }
         }
 
-        if (score == CORRECT_ANSWERS) {
+        if (score == QUESTIONS) {
             System.out.println("Congratulations, " + user + "!");
             scanner.close();
         }
-
-        return isIncorrect;
     }
 }
