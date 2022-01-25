@@ -6,7 +6,7 @@ public class Prime {
 
     private static final int MIN_DIVISOR = 3;
 
-    public static void isPrime() {
+    public static void play() {
         String question1 = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
         String[] questions = new String[Engine.QUESTIONS];
         String[] rightAnswers = new String[Engine.QUESTIONS];
@@ -14,22 +14,12 @@ public class Prime {
         for (int i = 0; i < questions.length; i++) {
             int number = Engine.getRandom().nextInt(Engine.RANGE);
             String rightAnswer = "";
-            boolean isEven = isEven(number);
-            boolean isNegative = isNegative(number);
+            boolean prime = isPrime(number);
 
-            if (number > 0 && number <= MIN_DIVISOR) {
+            if (prime) {
                 rightAnswer = "yes";
-            } else if (isNegative || isEven) {
-                rightAnswer = "no";
             } else {
-                for (int j = MIN_DIVISOR; j <= Math.ceil(Math.sqrt(number)); j++) {
-                    if (number % j == 0) {
-                        rightAnswer = "no";
-                        break;
-                    } else {
-                        rightAnswer = "yes";
-                    }
-                }
+                rightAnswer = "no";
             }
 
             questions[i] = String.valueOf(number);
@@ -44,5 +34,27 @@ public class Prime {
 
     private static boolean isNegative(int number) {
         return number < 0;
+    }
+
+    private static boolean isPrime(int number) {
+        boolean even = isEven(number);
+        boolean negative = isNegative(number);
+        boolean prime = false;
+
+        if (number > 0 && number <= MIN_DIVISOR) {
+            return true;
+        } else if (negative || even) {
+            return false;
+        } else {
+            for (int j = MIN_DIVISOR; j <= Math.ceil(Math.sqrt(number)); j++) {
+                if (number % j == 0) {
+                    return false;
+                } else {
+                    prime = true;
+                }
+            }
+        }
+
+        return prime;
     }
 }

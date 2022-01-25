@@ -6,7 +6,7 @@ public class GCD {
 
     private static final int MIN_VALUE = 1;
 
-    public static void gcd() {
+    public static void play() {
         String question1 = "Find the greatest common divisor of given numbers.";
         String[] questions = new String[Engine.QUESTIONS];
         String[] rightAnswers = new String[Engine.QUESTIONS];

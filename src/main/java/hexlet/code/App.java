@@ -41,15 +41,15 @@ public class App {
             if (choice == GREETING) {
                 Engine.greeting();
             } else if (choice == EVEN_GAME) {
-                Even.evenNumbers();
+                Even.play();
             } else if (choice == CALC_GAME) {
-                Calc.calc();
+                Calc.play();
             } else if (choice == GCD_GAME) {
-                GCD.gcd();
+                GCD.play();
             } else if (choice == PROGRESSION_GAME) {
-                Progression.progression();
+                Progression.play();
             } else if (choice == PRIME_GAME) {
-                Prime.isPrime();
+                Prime.play();
             } else if (choice == EXIT) {
                 Engine.exit();
             } else {

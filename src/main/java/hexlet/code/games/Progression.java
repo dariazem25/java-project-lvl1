@@ -7,7 +7,7 @@ public class Progression {
     private static final int BOUND = 10;
     private static int[] sequence = new int[BOUND];
 
-    public static void progression() {
+    public static void play() {
         String question1 = "What number is missing in the progression?";
         String[] questions = new String[Engine.QUESTIONS];
         String[] rightAnswers = new String[Engine.QUESTIONS];

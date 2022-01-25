@@ -4,7 +4,7 @@ import hexlet.code.Engine;
 
 public class Even {
 
-    public static void evenNumbers() {
+    public static void play() {
         String question1 = "Answer 'yes' if number even otherwise answer 'no'.";
         String[] questions = new String[Engine.QUESTIONS];
         String[] rightAnswers = new String[Engine.QUESTIONS];

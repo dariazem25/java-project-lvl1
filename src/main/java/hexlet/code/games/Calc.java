@@ -8,7 +8,7 @@ public class Calc {
 
     private static final int MAX_OPERATIONS = 3;
 
-    public static void calc() {
+    public static void play() {
         String question = "What is the result of the expression?";
         String[] questions = new String[Engine.QUESTIONS];
         String[] rightAnswers = new String[Engine.QUESTIONS];
